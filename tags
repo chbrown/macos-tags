@@ -1,0 +1,43 @@
+#!/usr/bin/env swift
+import Foundation
+import Cocoa
+
+// Process.arguments[0] is the fullpath to this file
+// Process.arguments[1] should be the filename
+let args = Process.arguments.dropFirst()
+// while `args` has dropped the script's own filename, and the count is
+// correct, it's only a slice, and the indexing is the same as for the
+// original Process.arguments array
+if args.count == 0 {
+  // no multiline strings in Swift
+  print([
+    "Usage: tags <file> [label1 ...]",
+    "",
+    "To show all tags for myFile.txt:",
+    "    tags myFile.txt",
+    "To set tags for otherFile.txt:",
+    "    tags otherFile.txt green blue",
+  ].joinWithSeparator("\n"))
+  exit(1)
+}
+
+let filename = args[1]
+let colors = args.dropFirst()
+let fileURL = NSURL(fileURLWithPath: filename)
+
+if colors.isEmpty {
+  var resourceValue: AnyObject?
+  // try is required since getResourceValue may throw
+  try! fileURL.getResourceValue(&resourceValue, forKey: NSURLTagNamesKey)
+  let resourceValueStrings = resourceValue as? [String]
+  if let tagNames = resourceValueStrings {
+    print(tagNames.joinWithSeparator("\t"))
+  }
+} else {
+  // set
+  // print("setting tags for \(filename) to \(colors)")
+  // copy colors to an Array, since setResourceValue won't take an ArraySlice
+  let tagNames = Array(colors)
+  try! fileURL.setResourceValue(tagNames, forKey: NSURLTagNamesKey)
+  print(tagNames.joinWithSeparator("\t"))
+}
