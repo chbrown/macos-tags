@@ -6,6 +6,7 @@ all:
 	@echo '  bin/tags'
 	@echo '  install'
 	@echo '  uninstall'
+	@echo '  clean'
 
 # -O         Compile with optimizations
 # -o <file>  Write output to <file>
@@ -20,3 +21,6 @@ install: bin/tags
 uninstall:
 	@rm -f -v $(DESTDIR)$(BINDIR)/tags
 	@[ -e $(DESTDIR)$(BINDIR)/tags.old ] && mv -v $(DESTDIR)$(BINDIR)/tags.old $(DESTDIR)$(BINDIR)/tags || :
+
+clean:
+	@rm -rf -v bin
