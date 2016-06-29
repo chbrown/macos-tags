@@ -4,7 +4,7 @@
 
 ![Image of README.md with Red, Green, and Blue tags](http://i.imgur.com/wIWUULF.png)
 
-Before OS X 10.9 Mavericks, these were called labels, and there are still constants in the API for label numbers and colors, but tags have superseded labels as of OS X >= 10.9.
+Before OS X 10.9 Mavericks, these were called labels, and there are still constants in the API for label numbers and colors, but tags have superseded labels as of Mac OS X ≥ 10.9.
 
 
 ## Install from source
