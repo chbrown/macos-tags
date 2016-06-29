@@ -29,7 +29,7 @@ The install directory can be changed via the `BINDIR` environment variable (defa
   - Use `-v` or `--verbose` to print out the specified tags.
   - Omit the tags to clear the files current tags.
 
-Any other arguments will print the error and the short usage message to `stdout`, then exit with `$*=1`.
+Any other arguments will print the error and the short usage message to `stdout`, then exit with `$?=1`.
 Non-existent files will cause the program to exit immediately, potentially with a cryptic error message (`NSError#localizedDescription` is not always descriptive, unfortunately).
 
 The ordering that Finder displays will be the reverse of the tags you provide; i.e., the last one will be leftmost and on top.
