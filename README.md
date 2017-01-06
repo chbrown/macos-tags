@@ -1,4 +1,4 @@
-# osx-tags
+# macos-tags
 
 `tags` is a command line tool for manipulating OS X's filesystem tags (the colored circles that adorn files / directories in Finder). E.g., these things:
 
@@ -11,8 +11,8 @@ Before OS X 10.9 Mavericks, these were called labels, and there are still consta
 
 Download, compile with `xcrun` + `swiftc`, and copy the executable file to `/usr/local/bin/tags`:
 
-    git clone https://github.com/chbrown/osx-tags
-    cd osx-tags
+    git clone https://github.com/chbrown/macos-tags
+    cd macos-tags
     make install
 
 The install directory can be changed via the `BINDIR` environment variable (default: `/usr/local/bin`).
@@ -59,4 +59,4 @@ Restore them to paths of the same name in the (or perhaps a different) working d
 
 ## License
 
-Copyright 2015-2016 Christopher Brown. [MIT Licensed](http://chbrown.github.io/licenses/MIT/#2015-2016).
+Copyright 2015-2017 Christopher Brown. [MIT Licensed](http://chbrown.github.io/licenses/MIT/#2015-2017).
