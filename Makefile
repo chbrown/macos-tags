@@ -1,26 +1,22 @@
 INSTALL ?= install
-BINDIR ?= /usr/local/bin
+prefix ?= /usr/local
+bindir ?= $(prefix)/bin
+# -O  Compile with optimizations
+CFLAGS := -O
 
-all:
-	@echo 'Valid targets:'
-	@echo '  bin/tags'
-	@echo '  install'
-	@echo '  uninstall'
-	@echo '  clean'
+all: bin/tags
 
-# -O         Compile with optimizations
-# -o <file>  Write output to <file>
 bin/tags: tags.swift
 	@mkdir -p $(@D)
-	xcrun -sdk macosx swiftc $< -O -o $@
+	xcrun -sdk macosx swiftc $< $(CFLAGS) -o $@
 
 # -b  Back up existing file by renaming to file.old
 install: bin/tags
-	@$(INSTALL) -b -v $< $(DESTDIR)$(BINDIR)
+	@$(INSTALL) -b -v $< $(DESTDIR)$(bindir)
 
 uninstall:
-	@rm -f -v $(DESTDIR)$(BINDIR)/tags
-	@[ -e $(DESTDIR)$(BINDIR)/tags.old ] && mv -v $(DESTDIR)$(BINDIR)/tags.old $(DESTDIR)$(BINDIR)/tags || :
+	@rm -f -v $(DESTDIR)$(bindir)/tags
+	@[ -e $(DESTDIR)$(bindir)/tags.old ] && mv -v $(DESTDIR)$(bindir)/tags.old $(DESTDIR)$(bindir)/tags || :
 
 clean:
 	@rm -rf -v bin
