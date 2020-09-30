@@ -59,4 +59,5 @@ Restore them to paths of the same name in the (or perhaps a different) working d
 
 ## License
 
-Copyright 2015-2017 Christopher Brown. [MIT Licensed](http://chbrown.github.io/licenses/MIT/#2015-2017).
+Copyright © 2015–2020 Christopher Brown.
+[MIT Licensed](https://chbrown.github.io/licenses/MIT/#2015-2020).
