@@ -1,9 +1,9 @@
 import Foundation
 
 func printHelp() {
-  // no multiline strings in Swift
   print("Usage: tags read [-v] [--verbose] [file1 ...]")
   print("       tags write [-v] [--verbose] file [tag1 ...]")
+  print("       tags add [-v] [--verbose] file [tag1 ...]")
 }
 
 func readTags(_ path: String) throws -> [String] {
@@ -47,6 +47,18 @@ func run(_ args: [String], verbose: Bool = false) throws {
       // regardless of the tags, since no tag arguments clears existing tags
       if verbose {
         print(tags.joined(separator: "\t"))
+      }
+    }
+    else {
+      throw ArgumentError.NotEnoughArguments
+    }
+  } else if verb == "add" {
+    if let path = rest.first {
+      let existingTags = try readTags(path)
+      let tags = existingTags + Array(rest.dropFirst());
+      try writeTags(path, tags)
+      if verbose {
+        print(existingTags.joined(separator: "\t"))
       }
     }
     else {
